@@ -4,13 +4,12 @@ package com.example.drumsrecognition;
  * Created by root on 7/7/16.
  */
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MDDTW {
-
-//    private List<Integer> caminhoDeformado1 = new ArrayList<Integer>();
-//    private List<Integer> caminhoDeformado2 = new ArrayList<Integer>();
 
     private double distancia = 0;
 
@@ -26,7 +25,7 @@ public class MDDTW {
         List<Double> caminho2Y;
         List<Double> caminho2Z;
 
-//        Log.d("SIZES", "" + sizeCaminho1 + " e " + sizeCaminho2);
+        Log.d("SIZES", "" + sizeCaminho1 + " e " + sizeCaminho2);
 
         caminho1X = caminho1.getXData();
         caminho1Y = caminho1.getYData();
@@ -70,9 +69,7 @@ public class MDDTW {
         }
 
         for (int contLinha = 1; contLinha < caminho1X.size(); contLinha++) {
-
             for (int contColuna = 1; contColuna < caminho2X.size(); contColuna++) {
-
                 distanciaAcumulada[contLinha][contColuna] = distancia[contLinha][contColuna]+ getMenorNumero(
                         distanciaAcumulada[contLinha-1][contColuna],
                         distanciaAcumulada[contLinha-1][contColuna-1],
@@ -80,37 +77,6 @@ public class MDDTW {
             }
         }
         this.distancia = distanciaAcumulada[caminho1X.size()-1][caminho2X.size()-1];
-
-//        int cont1 = caminho1.getDataSize() - 1;
-//        int cont2 = caminho2.getDataSize() - 1;
-//        caminhoDeformado1.add(cont1);
-//        caminhoDeformado2.add(cont2);
-//        while ((cont1 + cont2) != 1) {
-//            if ((cont1-1) == 0) {
-//                cont2--;
-//            } else if ((cont2-1) == 0) {
-//                cont1--;
-//            } else {
-//                int menorPosicao = getMenorPosicao(
-//                        distanciaAcumulada[cont1-1][cont2],
-//                        distanciaAcumulada[cont1][cont2-1],
-//                        distanciaAcumulada[cont1-1][cont2-1]);
-//                switch (menorPosicao) {
-//                    case 1:
-//                        cont1--;
-//                        break;
-//                    case 2:
-//                        cont2--;
-//                        break;
-//                    case 3:
-//                        cont1--;
-//                        cont2--;
-//                        break;
-//                }
-//            }
-//            caminhoDeformado1.add(cont1);
-//            caminhoDeformado2.add(cont2);
-//        }
     }
 
     private List<Double> normalizacaoZScore(List<Double> vet) {
@@ -169,30 +135,8 @@ public class MDDTW {
         }
     }
 
-    //    public List<Integer> getCaminhoDeformado1() {
-//        return this.caminhoDeformado1;
-//    }
-//    public List<Integer> getCaminhoDeformado2() {
-//        return this.caminhoDeformado2;
-//    }
     public double getDistancia() {
         return this.distancia;
     }
-//
-//    public static Boolean isMovimentoCorreto(SensorData caminhoAluno, SensorData caminhoProfessor, Double distancia, Double desvioPadrao, Double fatorDePrecisao) {
-//
-//        caminhoAluno = new Bezier(caminhoAluno).getBezcurve();
-//
-//        Double distAux = new MDDTW(caminhoAluno,caminhoProfessor).getDistancia();
-//
-//        if (distAux <= (distancia + (desvioPadrao*fatorDePrecisao)))
-//            return true;
-//        else
-//            return false;
-//    }
-//
-//    public static double getDistancia(SensorData caminhoAluno, SensorData caminhoProfessor, Double distancia, Double desvioPadrao, Double fatorDePrecisao) {
-//        caminhoAluno = new Bezier(caminhoAluno).getBezcurve();
-//        return new MDDTW(caminhoAluno,caminhoProfessor).getDistancia();
-//    }
+
 }
