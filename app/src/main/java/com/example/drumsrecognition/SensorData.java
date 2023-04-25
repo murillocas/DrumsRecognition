@@ -19,7 +19,7 @@ public class SensorData {
         List<Double> XData = new ArrayList<Double>();
 
         for (int i = 0; i < Accel.size(); i++) {
-            XData.add(i, (Double)Double.valueOf(Accel.get(i)[0]));
+            XData.add(i, (Double)Double.valueOf(Accel.get(i)[0]+""));
         }
 
         return XData;
@@ -29,7 +29,7 @@ public class SensorData {
         List<Double> YData = new ArrayList<Double>();
 
         for (int i = 0; i < Accel.size(); i++) {
-            YData.add(i, (Double)Double.valueOf(Accel.get(i)[1]));
+            YData.add(i, (Double)Double.valueOf(Accel.get(i)[1]+""));
         }
         return YData;
     }
@@ -38,7 +38,7 @@ public class SensorData {
         List<Double> ZData = new ArrayList<Double>();
 
         for (int i = 0; i < Accel.size(); i++) {
-            ZData.add(i, (Double)Double.valueOf(Accel.get(i)[2]));
+            ZData.add(i, (Double)Double.valueOf(Accel.get(i)[2]+""));
         }
         return ZData;
     }
